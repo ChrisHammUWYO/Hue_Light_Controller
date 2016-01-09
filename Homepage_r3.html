@@ -1,0 +1,129 @@
+<!-- Homepage r3 -->
+<!-- Chris Hamm -->
+<!-- HW13 -->
+<!-- CS3160 -->
+<!-- Revision 3 -->
+<html>
+<head>
+	<title>Hue Light Controller</title>
+	<link rel="stylesheet" type="text/css" href="Hue_Light_Controller_CSS.css">
+	<!-- below: used for compatibility wit old internet explorer browsers -->
+	<!--[if lt IE 9]>
+ 	 <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+	<![endif]-->
+	<!--<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script> <!-- this is defining the jquery ajax functions -->
+	<script src="Hue_Light_JS_Functions.js"></script>
+</head>
+<body>
+<div class="Homepage_Header">
+	<h1>Hue Light Controller</h1>
+	<p>Revision 3</p>
+</div> <!-- end of Homepage_Header div -->
+<div class="Bridge_Connection_Table_Div">
+	<table id="Bridge_Connection_Table">
+		<tr id="Credentials_Row">
+			<td id="Bridge_IP_Cell"><form>Bridge IP: <input type="text" name="Bridge_IP_Input" id="Bridge_IP_Input"></form></td>
+			<td id="Authentication_Username_Cell"><form>Authenticated Username: <input text="text" name="Authenticated_Username_Input" id="Authenticated_Username_Input"></form></td>
+		</tr> <!-- end of credentials row -->
+		<tr id="Connect_Button_Row">
+			<td id="Connect_Button_Cell" colspan="2"><button type="button" id="Connect_To_Bridge_Button" onclick="extractBridgeInfo()">Connect to Bridge</button></td>
+		</tr><!-- end of connect button row -->
+	</table> <!-- end of Bridge Connection Table -->
+</div> <!-- end of Bridge Connection Table Div -->
+<div class="Info_Window_Section">
+	<h3>Info Window</h3>
+	<p id="Info_Window">Enter in the Bridge's IP Address <br>
+	Then enter in the Authenticated Username <br>
+	Finally, Press the 'Connect to Bridge' Button <br>
+	</p>
+</div> <!-- end of Info window section -->
+<div class="Change_Light_Settings_Section">
+	<table id="Change_Light_Settings_Section_Table">
+		<tr id="Selected_Light_Row">
+			<td id="Selected_Light_Dropdown_Menu_Cell">Selected Light: <select id="Selected_Light" disabled="true">
+																			<option value="Light_1" id="Light_1">sync to bridge first</option>
+																			<option value="Light_2" id="Light_2">sync to bridge first</option>
+																			<option value="Light_3" id="Light_3">sync to bridge first</option>
+																			<option value="Light_4" id="Light_4">sync to bridge first</option>
+																			<option value="Light_5" id="Light_5">sync to bridge first</option>
+																		</select>
+			</td> <!-- end of selected light dropdown menu cell -->
+			<td id="Select_Light_Button_Cell"><button type="button" id="Select_Light_Button" onclick="getSelectedLightInfo()" disabled="true">Select Light</button></td>
+		</tr><!--end of selected light row -->
+		<tr id="Selected_Color_Row">
+			<td id="Selected_Color_Dropdown_Menu_Cell">Selected Color: <select id="Selected_Color" disabled="true">
+																			<option value="Custom" id="Custom">Custom</option>
+																			<option value="Default" id="Default">Default</option>
+																			<option value="Red" id="Red">Red</option>
+																			<option value="Yellow" id="Yellow">Yellow</option>
+																			<option value="Green" id="Green">Green</option>
+																			<option value="Blue" id="Blue">Blue</option>
+																			<option value="Purple" id="Purple">Purple</option>
+																			<option value="White" id="White">White</option>
+																		</select>
+			</td> <!-- end of selected color dropdown menu cell -->
+			<td id="Select_Color_Button_Cell"><button type="button" id="Select_Color_Button" onclick="" disabled="true">Select Color</button></td>
+		</tr><!-- end of selected color row -->
+	</table><!-- end of Change light settings section table -->
+</div> <!-- end of change light settings section -->
+<div class="Selected_Light_Properties_Table_Div">
+	<table id="Selected_Light_Properties_Table">
+		<tr id="Title_Row">
+			<td id="Selected_Light_Info_Title_Cell"><b><u>Selected Light Info</u></b></td>
+			<td id="Current_Light_Values_Cell"><b><u>Current Light Values</u></b></td>
+			<td id="New_Light_Values_Cell"><b><u>New Light Values</u></b></td>
+		</tr><!-- end of title row -->
+		<tr>
+			<td id="Selected_Light_Number">Light Number: N/A</td>
+			<td id="Selected_Light_State_On">Turned On (true/false value): <select disabled="true" id="Selected_Light_State_On_Dropdown_Menu">
+																					<option value="true">True</option>
+																					<option value="false">False</option>
+																				</select>
+			</td><!-- end of selected light state on -->
+			<td id="Selected_Light_State_On_New_Value">Turned On (true/false value): <select disabled="true" id="Selected_Light_State_On_Dropdown_Menu_New_Value">
+																					<option value="true">True</option>
+																					<option value="false">False</option>
+																				</select>
+			</td><!-- end of selected light state on new value -->
+		</tr> <!-- end of row 2 -->
+		<tr>
+			<td id="Selected_Light_Name">Light Name: N/A</td>
+			<td id="Selected_Light_State_Brightness"><form>Brightness (min=0 max=254): <input type="text" name="Selected_Light_State_Brightness_Textbox" id="Selected_Light_State_Brightness_Textbox" disabled="true"></form></td>
+			<td id="Selected_Light_State_Brightness_New_Value"><form>Brightness (min=0 max=254): <input type="text" name="Selected_Light_State_Brightness_Textbox_New_Value" id="Selected_Light_State_Brightness_Textbox_New_Value" disabled="true"></form></td>
+		</tr> <!-- end of row 3-->
+		<tr>
+			<td id="Selected_Light_Type">Light Type: N/A</td>
+			<td id="Selected_Light_State_Hue"><form>Hue (min=0 max=65535): <input type="text" name="Selected_Light_State_Hue_Textbox" id="Selected_Light_State_Hue_Textbox" disabled="true"></form></td>
+			<td id="Selected_Light_State_Hue_New_Value"><form>Hue (min=0 max=65535): <input type="text" name="Selected_Light_State_Hue_Textbox_New_Value" id="Selected_Light_State_Hue_Textbox_New_Value" disabled="true"></form></td>
+		</tr> <!-- end of row 4 -->
+		<tr>
+			<td id="Selected_Light_Model_ID">Model ID: N/A</td>
+			<td id="Selected_Light_State_Saturation"><form>Saturation (min=0 maxe=254): <input type="text" name="Selected_Light_State_Saturation_Textbox" id="Selected_Light_State_Saturation_Textbox" disabled="true"></form></td>
+			<td id="Selected_Light_State_Saturation_New_Value"><form>Saturation (min=0 maxe=254): <input type="text" name="Selected_Light_State_Saturation_Textbox_New_Value" id="Selected_Light_State_Saturation_Textbox_New_Value" disabled="true"></form></td>
+		</tr> <!-- end of row 5 -->
+		<tr>
+			<td id="Selected_Light_Manufacturer_Name">Manufacturer Name: N/A</td>
+			<td id="Selected_Light_State_Effect">Effect: <select disabled="true" id="Selected_Light_State_Effect_Dropdown_Menu">
+																	<option value="none">None</option>
+																	<option value="colorloop">Color Loop</option>
+															 </select>
+			</td> <!-- end of selected light state effect cell -->
+			<td id="Selected_Light_State_Effect_New_Value">Effect: <select disabled="true" id="Selected_Light_State_Effect_Dropdown_Menu_New_Value">
+																	<option value="none">None</option>
+																	<option value="colorloop">Color Loop</option>
+															 </select>
+			</td> <!-- end of selected light state effect new value cell -->
+		</tr> <!-- end of row 6 -->
+		<tr>
+			<td id="Selected_Light_SWVersion">SWVersion: N/A</td>
+		</tr> <!-- end of row 7 -->
+		<tr>
+			<td id="Selected_Light_Unique_ID" colspan="2">Unique ID: N/A</td>
+		</tr><!-- end of row 8 -->
+	</table><!-- end of selected light properties table -->
+</div><!-- end of selected light properties table div -->
+<div class="Apply_Changes_Button_Div">
+	<button type="button" id="Apply_Changes_Button" onclick="useApplyChangesButton()">Apply Changes</button>
+</div><!-- end of apply changes button div -->
+</body>
+</html>
