@@ -1,0 +1,36 @@
+/** Hue_Light_Controller_CSS r3 
+Chris Hamm
+**/
+
+html {width: 1024px;
+		height: 768px;}
+body {text-align: center;}
+
+.Homepage_Header {width: 100%;}
+#Bridge_Connection_Table {width: 100%;}
+#Bridge_Connection_Table #Bridge_IP_Cell {width: 50%;
+											text-align: center;}
+#Bridge_Connection_Table #Authenticated_Username_Cell {width: 50%;
+														text-align: center;}
+#Bridge_Connection_Table #Connect_Button_Cell {width: 100%;
+												text-align: center;}
+#Info_Window {width: 100%;
+				min-height: 5em;
+				background-color: black;
+				color: white;}
+#Change_Light_Settings_Section_Table {width: 100%;}
+#Change_Light_Settings_Section_Table #Selected_Light_Dropdown_Menu_Cell {width: 70%;
+																			text-align: center;}
+#Change_Light_Settings_Section_Table #Select_Light_Button_Cell {width: 30%;
+																	text-align: left;}
+#Change_Light_Settings_Section_Table #Selected_Color_Dropdown_Menu_Cell {width: 70%;
+																			text-align: center;}
+#Change_Light_Settings_Section_Table #Select_Color_Button_Cell {width: 30%;
+																	text-align: left;}
+#Selected_Light_Properties_Table {width: 100%;}
+#Selected_Light_Properties_Table #Selected_Light_Info_Title_Cell {width: 33.33%;
+																	text-align: center;}
+#Selected_Light_Properties_Table #Current_Light_Values_Cell {width: 33.33%;
+																text-align: center;}
+#Selected_Light_Properties_Table #New_Light_Values_Cell {width: 33.33%;
+															text-align: center;}
