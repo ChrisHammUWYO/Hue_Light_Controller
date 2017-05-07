@@ -24,3 +24,7 @@ click 'post' in the Hue Bridge test interface.
 
 in the 'command response' window, you will now see your username, which you 
 can use in the 'authenticated user' web page.
+
+More complete instructions on the developor test api can be found 
+[here](https://developers.meethue.com/documentation/getting-started)
+
